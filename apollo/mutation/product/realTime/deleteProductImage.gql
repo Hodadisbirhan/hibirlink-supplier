@@ -1,0 +1,7 @@
+mutation($ids:[bigint!]){
+  result:delete_physical_product_media(where:{id:{_in:$ids}}){
+    returning{
+      id
+    }
+  }
+}

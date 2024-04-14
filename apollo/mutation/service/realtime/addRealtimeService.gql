@@ -1,0 +1,5 @@
+mutation addRealtimeService($object: service_realtime_service_insert_input!) {
+  addRealtimeService: insert_service_realtime_service_one(object: $object) {
+    service_owner
+  }
+}

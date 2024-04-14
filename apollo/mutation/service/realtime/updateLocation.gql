@@ -1,0 +1,8 @@
+mutation ($location_id: bigint!, $object: service_service_address_set_input!) {
+  update_service_service_address_by_pk(
+    pk_columns: { id: $location_id }
+    _set: $object
+  ) {
+    id
+  }
+}

@@ -1,0 +1,24 @@
+query ($supplier_id: String!, $discount_id: bigint!) {
+  products: physical_product(
+    where: {
+      _and: [
+        { store: { supplier_id: { _eq: $supplier_id } } }
+        { discount_id: { _eq: $discount_id } }
+      ]
+    }
+  ) {
+    id
+    title
+    unit_price
+    store {
+      name
+    }
+    special_discount: product_discount {
+      id
+      start_date
+      end_date
+      reason
+      rate
+    }
+  }
+}

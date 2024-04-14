@@ -1,0 +1,25 @@
+query{
+  product_status{
+    state
+  }
+  category:physical_product_category{
+    id,
+    logo,
+    original_language{
+      translation_contents{
+        language_type
+        name
+      }
+    }
+    sub_category:physical_product_sub_categories{
+      id,
+      logo,
+      original_language{
+        translation_contents{
+          language_type,
+          name
+        }
+      }
+    }
+  }
+}

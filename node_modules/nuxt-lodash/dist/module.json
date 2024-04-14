@@ -1,0 +1,8 @@
+{
+  "name": "nuxt-lodash",
+  "configKey": "lodash",
+  "compatibility": {
+    "nuxt": "^3.0.0"
+  },
+  "version": "2.5.3"
+}

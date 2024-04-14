@@ -1,0 +1,18 @@
+query fetchService($service_id: bigint!) {
+  service: service_virtual_service_by_pk(id: $service_id) {
+    id
+    title
+    logo
+    web_link
+    license
+    phone_number
+    description
+    category_id
+    social_media
+    media: virtual_service_media {
+      type
+      url
+      id
+    }
+  }
+}

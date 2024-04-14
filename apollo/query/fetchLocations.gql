@@ -1,0 +1,22 @@
+query {
+  cities: region_city {
+    id
+    original_language {
+      translation_contents {
+        language_type
+        name
+      }
+    }
+    sub_cities {
+      id
+      latitude
+      longitude
+      original_language {
+        translation_contents {
+          language_type
+          name
+        }
+      }
+    }
+  }
+}

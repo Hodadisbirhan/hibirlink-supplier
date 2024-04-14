@@ -1,0 +1,11 @@
+query select_employee_by_email($where: users_bool_exp!) {
+  employee: users(where: $where) {
+    id
+    first_name
+    last_name
+    manager_id
+    phone_number
+    email
+    role
+  }
+}

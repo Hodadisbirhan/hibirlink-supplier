@@ -1,0 +1,5 @@
+mutation ($service_id: bigint!) {
+  delete_service_virtual_service_by_pk(id: $service_id) {
+    id
+  }
+}

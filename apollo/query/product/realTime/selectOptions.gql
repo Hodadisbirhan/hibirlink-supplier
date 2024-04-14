@@ -1,0 +1,16 @@
+query {
+  category: physical_product_category {
+    id
+    english_name
+    amharic_name
+    subCategory: physical_product_sub_categories {
+      id
+      english_name
+      amharic_name
+    }
+  }
+  status: product_status {
+    amharic_name
+    state
+  }
+}

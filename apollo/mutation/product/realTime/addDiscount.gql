@@ -1,0 +1,19 @@
+mutation (
+  $rate: numeric
+  $start_date: date
+  $end_date: date
+  $reason: String
+  $supplier_id: String!
+) {
+  insert_product_discount_one(
+    object: {
+      end_date: $end_date
+      start_date: $start_date
+      reason: $reason
+      rate: $rate
+      supplier_id: $supplier_id
+    }
+  ) {
+    id
+  }
+}

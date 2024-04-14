@@ -1,0 +1,22 @@
+query ($store_id: bigint!) {
+  store: store_by_pk(id: $store_id) {
+    name
+    phone_number
+    licence
+    account_id
+    category
+    longitude
+    latitude
+    description
+    sub_city {
+      id
+      city_region_id
+    }
+    bank_account {
+      account_number
+      bank_type
+      first_name
+      last_name
+    }
+  }
+}

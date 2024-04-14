@@ -1,0 +1,5 @@
+query{
+  bank_type{
+    name
+  }
+}

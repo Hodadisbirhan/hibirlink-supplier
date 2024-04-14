@@ -1,0 +1,30 @@
+mutation (
+  $user_id: String!
+  $email: String!
+  $fname: String
+  $lname: String
+  $phone: String
+  $token: String!
+) {
+  update_users_by_pk(
+    pk_columns: { id: $user_id }
+    _set: {
+      email: $email
+      first_name: $fname
+      last_name: $lname
+      phone_number: $phone
+    }
+  ) {
+    email
+  }
+  updateProfile(
+    credentials: {
+      firstName: $fname
+      lastName: $lname
+      newEmail: $email
+      token: $token
+    }
+  ) {
+    success
+  }
+}

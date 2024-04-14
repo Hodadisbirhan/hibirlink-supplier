@@ -1,0 +1,5 @@
+mutation deallocate_store($where: store_managed_by_bool_exp!) {
+  delete_store_managed_by(where: $where) {
+    row: affected_rows
+  }
+}

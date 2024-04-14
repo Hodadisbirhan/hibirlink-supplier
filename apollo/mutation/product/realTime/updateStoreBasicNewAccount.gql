@@ -1,0 +1,36 @@
+mutation (
+  $store_name: String
+  $phone: String
+  $category: String
+  $license: String
+  $account_num: String
+  $bank_type: String
+  $fname: String
+  $lname: String
+  $store_id: bigint!
+  $user_id:String
+) {
+  update_or_insert_store_bank_account(
+    args: {
+      user_id:$user_id
+      account_num: $account_num
+      btype: $bank_type
+      fname: $fname
+      lname: $lname
+      store_id: $store_id
+    }
+  ) {
+    account_id
+  }
+  update_store_by_pk(
+    pk_columns: { id: $store_id }
+    _set: {
+      name: $store_name
+      phone_number: $phone
+      category: $category
+      licence: $license
+    }
+  ) {
+    account_id
+  }
+}

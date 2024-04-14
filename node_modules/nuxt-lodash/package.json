@@ -1,0 +1,54 @@
+{
+  "name": "nuxt-lodash",
+  "version": "2.5.3",
+  "packageManager": "pnpm@8.9.2",
+  "description": "Lodash for Nuxt",
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "lodash",
+    "lodash-es"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cipami/nuxt-lodash"
+  },
+  "author": {
+    "name": "Michal Čípa",
+    "email": "michal.cipa@softlin.cz"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build --stub && nuxi prepare playground && nuxt-module-build",
+    "play": "nuxi dev playground",
+    "play:build": "nuxi build playground",
+    "play:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.8.0",
+    "@types/lodash-es": "^4.17.10",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "latest",
+    "@nuxtjs/eslint-config-typescript": "latest",
+    "@semantic-release/git": "^10.0.1",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "eslint": "latest",
+    "nuxt": "^3.8.0",
+    "semantic-release": "^20.1.3"
+  }
+}

@@ -1,0 +1,11 @@
+mutation updateBasicVirtualService(
+  $service_id: bigint!
+  $object: service_virtual_service_set_input!
+) {
+  update_service_virtual_service_by_pk(
+    pk_columns: { id: $service_id }
+    _set: $object
+  ) {
+    id
+  }
+}

@@ -1,0 +1,5 @@
+mutation add_physical_product($object: physical_product_insert_input!) {
+  add_product: insert_physical_product_one(object: $object) {
+    id
+  }
+}

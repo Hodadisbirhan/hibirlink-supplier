@@ -1,0 +1,5 @@
+mutation update_virtual_basic($product_id:bigint!,$set:virtual_product_set_input!){
+  update_virtual_product_by_pk(pk_columns:{id:$product_id},_set:$set){
+    id
+  }
+}

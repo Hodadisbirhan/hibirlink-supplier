@@ -1,0 +1,13 @@
+# query ($uid: String!) {
+#   supplier_by_pk(id: $uid) {
+#     status
+#     reviewed_reason
+#   }
+# }
+
+query ($uid: String!) {
+  users_by_pk(id: $uid) {
+    status
+    reason
+  }
+}

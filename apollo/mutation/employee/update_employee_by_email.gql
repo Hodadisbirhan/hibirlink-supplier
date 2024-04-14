@@ -1,0 +1,5 @@
+mutation update_employee_by_email($set: users_set_input!, $email: String!) {
+  employee: update_users(_set: $set, where: { email: { _eq: $email } }) {
+    affected_rows
+  }
+}

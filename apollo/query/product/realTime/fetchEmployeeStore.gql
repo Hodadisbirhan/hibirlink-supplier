@@ -1,0 +1,30 @@
+query ($manager_id: String!, $user_id: String!) {
+  store(
+    where: {
+      supplier_id: { _eq: $manager_id }
+      store_managed_bies: { employe_id: { _eq: $user_id } }
+    }
+  ) {
+    id
+    name
+    status
+    category
+    created_at
+    updated_at
+    bank: bank_account {
+      method: bank_type
+      account: account_number
+    }
+    total: store_managed_bies_aggregate {
+      employee: aggregate {
+        value: count
+      }
+    }
+
+    total_product: physical_products_aggregate {
+      total: aggregate {
+        count
+      }
+    }
+  }
+}

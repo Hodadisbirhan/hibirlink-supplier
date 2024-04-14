@@ -1,0 +1,33 @@
+query fetch_employee_by_id($employee_id: String!) {
+  user: users_by_pk(id: $employee_id) {
+    id
+    first_name
+    last_name
+    email
+    role
+    phone_number
+    created_at
+    managedStore: store_managed_bies {
+      store {
+        id
+        name
+        sub_city {
+          translate: original_language {
+            to: translation_contents {
+              language_type
+              name
+            }
+          }
+          region_city {
+            translate: original_language {
+              to: translation_contents {
+                language_type
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

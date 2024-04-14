@@ -1,0 +1,15 @@
+query($supplier_id:String!,$user_id:String!){
+  user:users_by_pk(id:$user_id) {
+    id
+    first_name
+    last_name
+  }
+  message(where:{_and:[{_or:[{sender_id:{_eq:$supplier_id}},{receiver_id:{_eq:$supplier_id}}]},{_or:[{sender_id:{_eq:$user_id}},{receiver_id:{_eq:$user_id}}]}]} order_by:{created_at:asc}){
+    id
+    message
+    receiver_id
+    updated_at
+    created_at
+    
+  }
+}

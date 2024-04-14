@@ -1,0 +1,5 @@
+mutation assign_store($objects: [store_managed_by_insert_input!]!) {
+  row: insert_store_managed_by(objects: $objects) {
+    affected_rows
+  }
+}

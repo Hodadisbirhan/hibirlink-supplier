@@ -1,0 +1,5 @@
+mutation ($object: [service_virtual_service_media_insert_input!]!) {
+  insert_service_virtual_service_media(objects: $object) {
+    affected_rows
+  }
+}

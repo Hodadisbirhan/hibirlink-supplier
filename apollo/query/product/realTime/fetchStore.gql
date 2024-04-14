@@ -1,0 +1,26 @@
+query ($supplier_id: String!) {
+  supplier: supplier_by_pk(id: $supplier_id) {
+    stores {
+      id
+      name
+      status
+      category
+      created_at
+      updated_at
+      bank: bank_account {
+        method: bank_type
+        account: account_number
+      }
+      total: store_managed_bies_aggregate {
+        employee: aggregate {
+          value: count
+        }
+      }
+      total_product: physical_products_aggregate {
+        total: aggregate {
+          count
+        }
+      }
+    }
+  }
+}

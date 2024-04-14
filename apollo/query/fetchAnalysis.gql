@@ -1,0 +1,57 @@
+query ($user_id: String!) {
+  supplier: supplier_by_pk(id: $user_id) {
+    store: stores_aggregate {
+      total: aggregate {
+        count
+      }
+    }
+    user: userById {
+      employee: users_aggregate(where: { manager_id: { _eq: $user_id } }) {
+        total: aggregate {
+          count
+        }
+      }
+    }
+  }
+  r_products: physical_product_aggregate(
+    where: { store: { supplier_id: { _eq: $user_id } } }
+  ) {
+    total: aggregate {
+      count
+    }
+  }
+  v_products: virtual_product_aggregate(
+    where: { supplier_id: { _eq: $user_id } }
+  ) {
+    total: aggregate {
+      count
+    }
+  }
+  v_services: service_virtual_service_aggregate(
+    where: { service_owner: { _eq: $user_id } }
+  ) {
+    total: aggregate {
+      count
+    }
+  }
+  r_services: service_realtime_service_aggregate(
+    where: { service_owner: { _eq: $user_id } }
+  ) {
+    total: aggregate {
+      count
+    }
+  }
+  order_detail(
+    where: {
+      _and: [
+        { status: { _eq: "completed" } }
+        { physical_product: { store: { supplier_id: { _eq: $user_id } } } }
+      ]
+    }
+  ) {
+    quantity
+    unit_price
+    discount
+    special_discount_rate
+  }
+}

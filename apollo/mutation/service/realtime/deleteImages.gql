@@ -1,0 +1,7 @@
+mutation deleteImage($ids: [bigint!]!) {
+  delete_service_realtime_service_media(where: { id: { _in: $ids } }) {
+    returning {
+      id
+    }
+  }
+}

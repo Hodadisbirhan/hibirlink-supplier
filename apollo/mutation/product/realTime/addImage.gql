@@ -1,0 +1,5 @@
+mutation($object:[physical_product_media_insert_input!]!){
+  insert_physical_product_media(objects:$object){
+    affected_rows
+  }
+}

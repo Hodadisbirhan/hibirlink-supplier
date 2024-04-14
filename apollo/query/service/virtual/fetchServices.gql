@@ -1,0 +1,23 @@
+query($supplier_id:String!){
+  supplier:supplier_by_pk(id:$supplier_id){
+    services:virtual_services{
+      id,
+      title
+      description
+      web_link
+      logo
+      images:virtual_service_media{
+        id,
+        url
+      },
+      total_rate:virtual_service_rates_aggregate{
+        rate:aggregate{
+          avg{
+            rate
+          }
+        }
+      }
+      
+    }
+  }
+}

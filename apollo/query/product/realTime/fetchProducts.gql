@@ -1,0 +1,54 @@
+query ($store_id: bigint!) {
+  store: store_by_pk(id: $store_id) {
+    products: physical_products {
+      id
+      title
+      cover_image
+      description
+      quantity
+      unit_price
+      discount
+      status
+      user {
+        first_name
+        last_name
+        email
+      }
+      special_discount: product_discount {
+        id
+        end_date
+        start_date
+        reason
+        rate
+      }
+      sub_category: physical_product_sub_category {
+        id
+        original_language {
+          translation_contents {
+            name
+          }
+        }
+        category: physical_product_category {
+          id
+          original_language {
+            translation_contents {
+              name
+            }
+          }
+        }
+      }
+
+      images: physical_product_media {
+        id
+        url
+      }
+      total_rate: physical_product_rates_aggregate {
+        rate: aggregate {
+          avg {
+            rate
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+query{
+  category:virtual_product_category{
+    id
+    original_language{
+      translation_contents{
+        language_type
+        name
+      }
+    }
+  }
+}

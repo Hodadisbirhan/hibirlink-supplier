@@ -1,0 +1,5 @@
+mutation delete_employee($employee_email: String!) {
+  delete_users(where: { email: { _eq: $employee_email } }) {
+    affected_rows
+  }
+}

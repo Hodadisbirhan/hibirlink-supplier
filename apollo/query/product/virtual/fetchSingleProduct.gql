@@ -1,0 +1,15 @@
+query($product_id:bigint!){
+  product:virtual_product_by_pk(id:$product_id){
+    id
+    title
+    unit_price
+    description
+    demo_link
+    category_id
+    images:virtual_product_media{
+       id
+       url
+    },
+    cover_image
+  }
+}

@@ -1,0 +1,8 @@
+query($user_id:String!){
+  user:users_by_pk(id:$user_id){
+    first_name
+    last_name
+    email
+    phone_number
+  }
+}

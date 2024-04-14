@@ -1,0 +1,5 @@
+mutation ($product_id: bigint!) {
+  delete_virtual_product_by_pk(id: $product_id) {
+    id
+  }
+}

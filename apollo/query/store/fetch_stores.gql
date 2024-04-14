@@ -1,0 +1,25 @@
+query fetchStore($where: store_bool_exp!) {
+  store(where: $where) {
+    id
+    name
+    description
+    street
+ 
+    sub_city {
+      translate: original_language {
+        to: translation_contents {
+          name
+          language_type
+        }
+      }
+      region_city {
+        translate: original_language {
+          to: translation_contents {
+            name
+            language_type
+          }
+        }
+      }
+    }
+  }
+}

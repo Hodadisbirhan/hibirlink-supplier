@@ -1,0 +1,14 @@
+query ($where: store_bool_exp, $where2: order_detail_bool_exp) {
+  store(where: $where) {
+    name
+  }
+  orders: order_detail(where: $where2) {
+    status
+    physical_product {
+      store {
+        id
+        name
+      }
+    }
+  }
+}

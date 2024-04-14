@@ -1,0 +1,27 @@
+query fetch_employer_by_manager(
+  $where: users_bool_exp
+  $limit: Int!
+  $offset: Int!
+) {
+  users(where: $where, limit: $limit, offset: $offset) {
+    id
+    first_name
+    last_name
+    email
+    phone_number
+    role
+    store_managed_by: store_managed_bies {
+      store_id
+      employe_id
+      store {
+        name
+      }
+    }
+  }
+
+  total_employee: users_aggregate(where: $where) {
+    count: aggregate {
+      count
+    }
+  }
+}

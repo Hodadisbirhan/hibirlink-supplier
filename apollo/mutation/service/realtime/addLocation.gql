@@ -1,0 +1,5 @@
+mutation ($object: service_service_address_insert_input!) {
+  insert_service_service_address_one(object: $object) {
+    id
+  }
+}

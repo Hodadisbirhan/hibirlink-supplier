@@ -1,0 +1,5 @@
+mutation($product_id:[bigint!]){
+  update_physical_product(_set:{discount_id:null},where:{id:{_in:$product_id}}){
+    affected_rows
+  }
+}

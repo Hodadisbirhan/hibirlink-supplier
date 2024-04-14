@@ -1,0 +1,11 @@
+mutation update_physical_product(
+  $set: physical_product_set_input!
+  $id: bigint!
+) {
+  update_product: update_physical_product_by_pk(
+    _set: $set
+    pk_columns: { id: $id }
+  ) {
+    id
+  }
+}

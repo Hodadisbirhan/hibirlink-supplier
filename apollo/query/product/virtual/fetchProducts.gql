@@ -1,0 +1,23 @@
+query ($supplier_id: String!) {
+  supplier: supplier_by_pk(id: $supplier_id) {
+    products: virtual_products {
+      id
+      title
+      unit_price
+      description
+      demo_link
+      cover_image
+      images: virtual_product_media {
+        id
+        url
+      }
+      total_rate: virtual_product_rates_aggregate {
+        rate: aggregate {
+          avg {
+            rate
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+mutation($object: virtual_product_insert_input!) {
+  insert_virtual_product_one(object: $object) {
+    id
+  }
+}

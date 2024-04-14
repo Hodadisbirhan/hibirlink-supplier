@@ -1,0 +1,23 @@
+query ($product_id: bigint!) {
+  product: physical_product_by_pk(id: $product_id) {
+    id
+    cover_image
+    unit_price
+    description
+    discount
+    title
+    min_order
+    images: physical_product_media {
+      url
+      id
+    }
+    sub_category: physical_product_sub_category {
+      id
+      category: physical_product_category {
+        id
+      }
+    }
+    status
+    quantity
+  }
+}

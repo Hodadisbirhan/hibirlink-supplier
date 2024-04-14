@@ -1,0 +1,27 @@
+query fetchRealTimeService($supplier_id: String!) {
+  supplier: supplier_by_pk(id: $supplier_id) {
+    realtime_services {
+      id
+      title
+      availability
+      description
+      license
+      logo
+      availability
+      description
+      status: release_status
+      media: realtime_service_media {
+        id
+        url
+        type
+      }
+      user_rate: realtime_service_rates_aggregate {
+        total_rate: aggregate {
+          avg {
+            rate
+          }
+        }
+      }
+    }
+  }
+}

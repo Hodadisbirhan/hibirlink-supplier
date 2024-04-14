@@ -1,0 +1,6 @@
+mutation add_employeer($Employee: EmployeerInput!) {
+  add_employer(value: $Employee) {
+    message
+    status
+  }
+}

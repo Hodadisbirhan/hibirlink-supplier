@@ -1,0 +1,7 @@
+mutation($store_id:bigint!,$set:store_set_input!){
+  update_store_by_pk(pk_columns:{
+    id:$store_id
+  },_set:$set){
+    account_id
+  }
+}

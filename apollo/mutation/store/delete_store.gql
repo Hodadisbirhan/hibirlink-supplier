@@ -1,0 +1,5 @@
+mutation deleteStore($storeId: bigint!){
+  delete:delete_store_by_pk(id: $storeId){
+    id
+  }
+}

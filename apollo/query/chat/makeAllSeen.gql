@@ -1,0 +1,10 @@
+mutation ($user_id: String, $sender_id: String!) {
+  update_message(
+    _set: { seen: true }
+    where: { receiver_id: { _eq: $user_id }, sender_id: { _eq: $sender_id } }
+  ) {
+    returning {
+      id
+    }
+  }
+}

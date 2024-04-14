@@ -1,0 +1,31 @@
+query fetchService($service_id: bigint!) {
+  service: service_realtime_service_by_pk(id: $service_id) {
+    id
+    title
+    logo
+    availability
+    license
+    phone_number
+    description
+    category_id
+
+    media: realtime_service_media {
+      type
+      url
+      id
+    }
+
+    address: service_addresses {
+      description
+      id
+      latitude
+      longitude
+      sub_city {
+        id
+        region_city {
+          id
+        }
+      }
+    }
+  }
+}

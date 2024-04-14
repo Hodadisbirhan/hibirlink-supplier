@@ -1,0 +1,5 @@
+mutation($object:[virtual_product_media_insert_input!]!){
+  insert_virtual_product_media(objects:$object){
+    affected_rows
+  }
+}

@@ -1,0 +1,5 @@
+mutation ($discount_id: bigint!) {
+  delete_product_discount_by_pk(id: $discount_id) {
+    id
+  }
+}

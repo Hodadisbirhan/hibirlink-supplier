@@ -1,0 +1,13 @@
+query fetch_realtime_service_category {
+  realtime_service_categories: service_realtime_service_category {
+    id
+    logo
+    primary: original_language {
+      id
+      translation_contents {
+        language_type
+        name
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+mutation addVirtualService($object: service_virtual_service_insert_input!) {
+  addVirtualService: insert_service_virtual_service_one(object: $object) {
+    service_owner
+  }
+}

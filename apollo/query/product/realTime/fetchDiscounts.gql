@@ -1,0 +1,16 @@
+query ($supplier_id: String!) {
+  supplier: supplier_by_pk(id: $supplier_id) {
+    discount: product_discounts {
+      id
+      start_date
+      end_date
+      rate
+      reason
+      total: physical_products_aggregate {
+        product: aggregate {
+          count
+        }
+      }
+    }
+  }
+}

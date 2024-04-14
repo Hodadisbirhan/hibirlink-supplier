@@ -1,0 +1,5 @@
+mutation ($location_id: bigint!) {
+  delete_service_service_address_by_pk(id: $location_id) {
+    id
+  }
+}
