@@ -28,9 +28,7 @@ const {
   errorMessage,
   value: inputValue,
   meta,
-} = useField(props.name, props.rules, {
-  initialValue: props.modelValue,
-});
+} = useField(props.name, props.rules);
 
 const set = (event: any) => {
   emit("update:modelValue", event?.target?.value);
@@ -39,24 +37,25 @@ const set = (event: any) => {
 watch(
   () => props.modelValue,
   (newVal) => {
-    inputValue.value = newVal;
-  }
+    if (newVal) inputValue.value = newVal;
+  },
+  { immediate: true }
 );
 </script>
 
 <template>
-  <div :class="props.class" class="w-full group">
+  <div
+    :class="props.class"
+    class="w-full group">
     <label
       :class="props.class"
       class="text-neutral400 font-semibold group-hover:font-bold mb-1 text-sm"
-      :for="name"
-    >
+      :for="name">
       {{ label }}
     </label>
     <div
       class="relative group flex items-center justify-center transition-all ease-in-out duration-300"
-      :class="props.class"
-    >
+      :class="props.class">
       <textarea
         v-model="inputValue"
         @input="set($event)"
@@ -74,16 +73,14 @@ watch(
         :placeholder="props.placeholder"
         aria-invalid="true"
         aria-describedby="email-error"
-        :disabled="props.disabled"
-      />
+        :disabled="props.disabled" />
     </div>
 
     <p
       v-if="!props.hideDetail"
       :visible="errorMessage"
       class="px-1 text-xs font-medium text-red mb-1"
-      id="email-error"
-    >
+      id="email-error">
       {{ errorMessage || "" }} &nbsp;
     </p>
   </div>

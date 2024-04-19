@@ -5,17 +5,16 @@
 </template> -->
 <template>
   <main
-    class="w-full min-h-screen flex flex-col font-nunito bg-light300 relative"
-  >
+    class="w-full min-h-screen flex flex-col font-nunito bg-light300 relative">
     <nav
-      class="w-full h-[3.5rem] sticky top-0 left-0 right-0 bg-light400 bg-opacity-20 px-3 flex items-center justify-between z-30 xl:gap-16 gap-8 backdrop-blur"
-    >
+      class="w-full h-[3.5rem] sticky top-0 left-0 right-0 bg-light400 bg-opacity-20 px-3 flex items-center justify-between z-30 xl:gap-16 gap-8 backdrop-blur">
       <div class="flex items-center justify-center gap-6">
-        <div class="block lg:hidden" @click="() => (showMobileDrawer = true)">
+        <div
+          class="block lg:hidden"
+          @click="() => (showMobileDrawer = true)">
           <Icon
             name="ci:menu-alt-04"
-            class="w-8 h-8 mt-2 text-neutral200 hover:text-primary cursor-pointer transition-colors ease-in-out duration-200"
-          />
+            class="w-8 h-8 mt-2 text-neutral200 hover:text-primary cursor-pointer transition-colors ease-in-out duration-200" />
         </div>
         <a href="http://localhost:3000/">
           <Logo class="scale-[0.71] -ml-3" />
@@ -35,7 +34,7 @@
             >{{ $t("products") }}</a
           >
           <a
-            href="http://localhost:3000/next-rel"
+            href="http://localhost:3000/auction"
             class="relative cursor-pointer flex items-center justify-center text-neutral200 hover:text-primaryvar1 w-[6.7rem] h-8 font-semibold before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-500 after:duration-500 before:rounded-sm after:rounded-sm"
             >{{ $t("auction") }}</a
           >
@@ -50,12 +49,10 @@
                 if (locale === 'en') locale = 'am';
                 else locale = 'en';
               }
-            "
-          >
+            ">
             <Icon name="ion:language" /> {{ locale === "en" ? "Eng" : "አማ" }}
           </li>
 
-          <!--  -->
           <h-button
             @click="handleLogout"
             type="button"
@@ -64,9 +61,7 @@
             btn-name-class="font-bold"
             leading-icon-class="p-2"
             :isLoading="isLoading"
-            class="min-w-[5rem]"
-          />
-          <!--  -->
+            class="min-w-[5rem]" />
         </ul>
       </div>
     </nav>
@@ -76,8 +71,14 @@
       </div>
     </section>
 
-    <TransitionRoot as="template" :show="openNav" class="lg:hidden block">
-      <Dialog as="div" class="relative z-50" @close="open = false">
+    <TransitionRoot
+      as="template"
+      :show="openNav"
+      class="lg:hidden block">
+      <Dialog
+        as="div"
+        class="relative z-50"
+        @close="open = false">
         <TransitionChild
           as="template"
           enter="ease-in-out duration-300"
@@ -85,18 +86,15 @@
           enter-to="opacity-100"
           leave="ease-in-out duration-300"
           leave-from="opacity-100"
-          leave-to="opacity-0"
-        >
+          leave-to="opacity-0">
           <div
-            class="fixed inset-0 bg-neutral300 bg-opacity-50 transition-opacity"
-          />
+            class="fixed inset-0 bg-neutral300 bg-opacity-50 transition-opacity" />
         </TransitionChild>
 
         <div class="fixed inset-0 overflow-hidden">
           <div class="absolute inset-0 overflow-hidden">
             <div
-              class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
-            >
+              class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
               <TransitionChild
                 as="template"
                 enter="transform transition ease-in-out duration-300 sm:duration-300"
@@ -104,11 +102,9 @@
                 enter-to="translate-x-0"
                 leave="transform transition ease-in-out duration-300 sm:duration-300"
                 leave-from="translate-x-0"
-                leave-to="translate-x-full"
-              >
+                leave-to="translate-x-full">
                 <DialogPanel
-                  class="pointer-events-auto relative w-screen max-w-sm"
-                >
+                  class="pointer-events-auto relative w-screen max-w-sm">
                   <TransitionChild
                     as="template"
                     enter="ease-in-out duration-300"
@@ -116,38 +112,31 @@
                     enter-to="opacity-100"
                     leave="ease-in-out duration-300"
                     leave-from="opacity-100"
-                    leave-to="opacity-0"
-                  >
+                    leave-to="opacity-0">
                     <div
-                      class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4"
-                    ></div>
+                      class="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4"></div>
                   </TransitionChild>
                   <div
                     ref="mobileNavTarget"
-                    class="flex h-full flex-col overflow-y-auto font-nunito bg-light300 py-6 shadow-xl"
-                  >
+                    class="flex h-full flex-col overflow-y-auto font-nunito bg-light300 py-6 shadow-xl">
                     <div
-                      class="px-4 sm:px-6 flex flex-col items-center justify-center"
-                    >
+                      class="px-4 sm:px-6 flex flex-col items-center justify-center">
                       <NuxtLink
                         :to="{ name: 'index' }"
                         @click="
                           () => {
                             openNav = false;
                           }
-                        "
-                      >
+                        ">
                         <Logo
-                          class="scale-[0.71] outline-none border-none focus:border-none focus:outline-none"
-                        />
+                          class="scale-[0.71] outline-none border-none focus:border-none focus:outline-none" />
                       </NuxtLink>
                       <h3 class="text-neutral300 font-semibold">
                         We Link Everything.
                       </h3>
                     </div>
                     <ul
-                      class="relative flex-1 mt-6 px-4 sm:px-6 flex flex-col gap-4"
-                    >
+                      class="relative flex-1 mt-6 px-4 sm:px-6 flex flex-col gap-4">
                       <NuxtLink
                         :class="{
                           'router-link-active':
@@ -161,9 +150,10 @@
                             openNav = false;
                           }
                         "
-                        class="relative h-11 rounded flex gap-2 items-center justify-start font-bold px-4 text-neutral300 before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-300 after:duration-300 before:rounded-sm after:rounded-sm"
-                      >
-                        <Icon name="mingcute:service-fill" class="w-5 h-5" />
+                        class="relative h-11 rounded flex gap-2 items-center justify-start font-bold px-4 text-neutral300 before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-300 after:duration-300 before:rounded-sm after:rounded-sm">
+                        <Icon
+                          name="mingcute:service-fill"
+                          class="w-5 h-5" />
                         {{ $t("orders") }}</NuxtLink
                       >
                       <NuxtLink
@@ -177,11 +167,10 @@
                             openNav = false;
                           }
                         "
-                        class="relative h-11 rounded flex gap-2 items-center justify-start text-neutral300 font-bold px-4 before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-300 after:duration-300 before:rounded-sm after:rounded-sm"
-                      >
-                        <Icon name="ep:goods" class="w-5 h-5" />{{
-                          $t("store")
-                        }}</NuxtLink
+                        class="relative h-11 rounded flex gap-2 items-center justify-start text-neutral300 font-bold px-4 before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-300 after:duration-300 before:rounded-sm after:rounded-sm">
+                        <Icon
+                          name="ep:goods"
+                          class="w-5 h-5" />{{ $t("store") }}</NuxtLink
                       >
                       <NuxtLink
                         v-if="store.role == 'store_manager'"
@@ -195,11 +184,10 @@
                             openNav = false;
                           }
                         "
-                        class="relative h-11 rounded flex gap-2 items-center justify-start text-neutral300 font-bold px-4 before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-300 after:duration-300 before:rounded-sm after:rounded-sm"
-                      >
-                        <Icon name="ep:goods" class="w-5 h-5" />{{
-                          $t("discount")
-                        }}</NuxtLink
+                        class="relative h-11 rounded flex gap-2 items-center justify-start text-neutral300 font-bold px-4 before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-300 after:duration-300 before:rounded-sm after:rounded-sm">
+                        <Icon
+                          name="ep:goods"
+                          class="w-5 h-5" />{{ $t("discount") }}</NuxtLink
                       >
                       <NuxtLink
                         :class="{
@@ -212,11 +200,10 @@
                             openNav = false;
                           }
                         "
-                        class="relative h-11 rounded flex gap-2 items-center justify-start text-neutral300 font-bold px-4 before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-300 after:duration-300 before:rounded-sm after:rounded-sm"
-                      >
-                        <Icon name="ri:auction-line" class="w-5 h-5" />{{
-                          $t("chat")
-                        }}</NuxtLink
+                        class="relative h-11 rounded flex gap-2 items-center justify-start text-neutral300 font-bold px-4 before:contnet-[''] after:contnet-[''] before:absolute after:absolute before:left-0 after:right-0 before:bottom-0 after:top-0 before:w-0 hover:before:w-full after:w-0 hover:after:w-full before:h-0 hover:before:h-full after:h-0 hover:after:h-full before:border-b-2 after:border-t-2 before:border-l-2 after:border-r-2 before:border-transparent hover:before:border-primary after:border-transparent hover:after:border-primary before:transition-all after:transition-all before:ease-in-out after:ease-in-out before:duration-300 after:duration-300 before:rounded-sm after:rounded-sm">
+                        <Icon
+                          name="ri:auction-line"
+                          class="w-5 h-5" />{{ $t("chat") }}</NuxtLink
                       >
                     </ul>
                     <hr class="w-3/4 self-center py-2" />

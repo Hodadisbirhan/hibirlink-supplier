@@ -9,16 +9,13 @@
 
     <div
       v-if="showProductsDialog"
-      class="fixed w-full h-full flex items-center justify-center left-0 top-0 bg-black/20 z-50"
-    >
+      class="fixed w-full h-full flex items-center justify-center left-0 top-0 bg-black/20 z-50">
       <div
-        class="bg-light400 max-h-[500px] rounded-md p-5 mx-4 relative overflow-x-scroll"
-      >
+        class="bg-light400 max-h-[500px] rounded-md p-5 mx-4 relative overflow-x-scroll">
         <Icon
           name="ion:close-outline"
           class="w-8 h-8 absolute right-3 top-1 cursor-pointer"
-          @click="closeProductDialog"
-        />
+          @click="closeProductDialog" />
         <h-table
           class="mt-5"
           :item-i-d="productId"
@@ -27,8 +24,7 @@
           :is-checked="true"
           @select:row="checkedProducts"
           header-class="bg-darkblue text-light300 py-2 rounded-sm px-1 border-b"
-          body-class="py-3 border-b border-neutral500 px-1 font-bold text-neutral100"
-        >
+          body-class="py-3 border-b border-neutral500 px-1 font-bold text-neutral100">
           <template #product_name="{ item }">
             {{ item.product_name }}
           </template>
@@ -54,23 +50,19 @@
           rounded-class="rounded-md"
           leading-icon-class="bg-primary"
           btn-class="overflow-hidden bg-darkblue text-light400"
-          btn-name-class="px-2 font-bold"
-        />
+          btn-name-class="px-2 font-bold" />
       </div>
     </div>
 
     <div
       v-if="showDiscountProductsDialog"
-      class="fixed w-full h-full flex items-center justify-center left-0 top-0 bg-black/20 z-50"
-    >
+      class="fixed w-full h-full flex items-center justify-center left-0 top-0 bg-black/20 z-50">
       <div
-        class="bg-light400 max-h-[500px] rounded-md p-5 mx-4 relative overflow-x-scroll"
-      >
+        class="bg-light400 max-h-[500px] rounded-md p-5 mx-4 relative overflow-x-scroll">
         <Icon
           name="ion:close-outline"
           class="w-8 h-8 absolute right-3 top-1 cursor-pointer"
-          @click="closeProductDialog"
-        />
+          @click="closeProductDialog" />
         <h-table
           class="mt-5"
           :item-i-d="productId"
@@ -79,8 +71,7 @@
           :is-checked="true"
           @select:row="checkedProducts"
           header-class="bg-darkblue text-light300 py-2 rounded-sm px-1 border-b"
-          body-class="py-3 border-b border-neutral500 px-1 font-bold text-neutral100"
-        >
+          body-class="py-3 border-b border-neutral500 px-1 font-bold text-neutral100">
           <template #product_name="{ item }">
             {{ item.product_name }}
           </template>
@@ -107,8 +98,7 @@
           rounded-class="rounded-md"
           leading-icon-class="bg-primary"
           btn-class="overflow-hidden bg-darkblue text-light400"
-          btn-name-class="px-2 font-bold"
-        />
+          btn-name-class="px-2 font-bold" />
       </div>
     </div>
 
@@ -117,18 +107,15 @@
     </div>
 
     <div
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 text-neutral300"
-    >
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 text-neutral300">
       <div
         v-for="(discount, index) in discounts"
         :key="index"
-        class="rounded-lg relative px-5 py-8 bg-light400 shadow-sm text-sm flex flex-col items-center justify-center"
-      >
+        class="rounded-lg relative px-5 py-8 bg-light400 shadow-sm text-sm flex flex-col items-center justify-center">
         <div class="flex gap-2 items-center justify-center">
           <Icon
             name="arcticons:cdiscount"
-            class="w-14 h-12 rotate-90 text-primary"
-          />
+            class="w-14 h-12 rotate-90 text-primary" />
           <div>
             <p class="text-2xl font-bold text-primary">{{ discount.rate }}%</p>
             <p class="mb-2 text-sm">Discount</p>
@@ -145,7 +132,9 @@
         <hr class="my-2 h-2 w-full" />
         <div class="mb-auto text-center">
           <p class="text-xs font-semibold flex gap-1">
-            <Icon name="ri:calendar-2-line" class="text-md text-primaryvar2" />
+            <Icon
+              name="ri:calendar-2-line"
+              class="text-md text-primaryvar2" />
             {{ discount.start_date }} -
             {{ discount.end_date }}
           </p>
@@ -163,8 +152,7 @@
         <div
           v-if="discount?.end_date >= currentDate"
           class="py-1 px-4 border-2 absolute bottom-4 mx-auto border-primaryvar1 text-primaryvar1 rounded-md hover:bg-primaryvar1 hover:text-light400 cursor-pointer"
-          @click="showProductsDialogPopUp(discount.id)"
-        >
+          @click="showProductsDialogPopUp(discount.id)">
           Assign
         </div>
       </div>
@@ -173,7 +161,7 @@
 </template>
 <script setup lang="ts">
 import fetchProducts from "@/apollo/query/product/realTime/fetchProductsForDiscount.gql";
-import fetchDiscount from "@/apollo/query/product/realtime/fetchDiscounts.gql";
+import fetchDiscount from "@/apollo/query/product/realTime/fetchDiscounts.gql";
 import addSpecialDiscount from "@/apollo/mutation/product/realTime/addSpecialDiscount.gql";
 import fetchDiscountedProducts from "@/apollo/query/product/realTime/fetchDiscountedProducts.gql";
 import removeProductDiscount from "@/apollo/mutation/product/realTime/removeDiscountFromProduct.gql";

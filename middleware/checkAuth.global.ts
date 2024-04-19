@@ -5,10 +5,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
   console.log(to);
 
   if (token.value && uid.value) {
-      if(to.path == "/chats"){
-        return true
-      }
-    else if (
+    if (to.path == "/chats") {
+      return true;
+    } else if (
       (role.value == "guest" || role.value == "store_manager") &&
       to.path.includes("store-employee")
     ) {

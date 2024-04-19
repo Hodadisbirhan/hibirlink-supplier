@@ -1,38 +1,32 @@
 <template>
   <main
-    class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-2 w-full gap-x-6 gap-y-3 my-10 px-5"
-  >
+    class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-2 w-full gap-x-6 gap-y-3 my-10 px-5">
     <div class="flex flex-col">
       <h-select
         :items="cityList"
         label="region_city_administration"
         name="region_or_administration"
-        v-model="regionAt"
-      >
+        v-model="regionAt">
       </h-select>
       <h-select
         :items="subCityList || []"
         label="sub_city"
         name="sub_city"
-        v-model="subCityAt"
-      >
+        v-model="subCityAt">
       </h-select>
 
       <h-text-area
         name="location_detail"
         :label="$t('location_detail') + '(' + $t('optional') + ')'"
         :placeholder="$t('location_detail')"
-        v-model="locationDescription"
-      />
+        v-model="locationDescription" />
 
       <p
         @click="onAddLocation"
-        class="w-fit group ml-auto mt-2 font-bold text-neutral300/60 hover:text-neutral300 cursor-pointer transition-all duration-300 ease-in-out border-2 border-neutral300/40 hover:border-neutral300 rounded-lg border-opacity-20 py-1 px-2"
-      >
+        class="w-fit group ml-auto mt-2 font-bold text-neutral300/60 hover:text-neutral300 cursor-pointer transition-all duration-300 ease-in-out border-2 border-neutral300/40 hover:border-neutral300 rounded-lg border-opacity-20 py-1 px-2">
         <Icon
           name="material-symbols:add-location-alt"
-          class="w-5 h-5 text-neutral300/60 group-hover:text-neutral300 transition-colors duration-300 ease-in-out"
-        />
+          class="w-5 h-5 text-neutral300/60 group-hover:text-neutral300 transition-colors duration-300 ease-in-out" />
         {{ $t(btnName) }}
       </p>
     </div>
@@ -45,8 +39,7 @@
         :toTrackWithRealAddressLine="true"
         :isToAddLocation="true"
         @getLocation="getLocation"
-        class="w-full h-[20rem] mt-6 py-5"
-      />
+        class="w-full h-[20rem] mt-6 py-5" />
     </div>
   </main>
 </template>
@@ -88,6 +81,25 @@ interface PropsInterface {
   };
 }
 
+const props = defineProps<PropsInterface>();
+
+const emits = defineEmits(["addLocation", "update_v_model"]);
+
+interface CenterInterface {
+  lat?: number;
+  lng?: number;
+}
+const center = ref<CenterInterface>();
+onMounted(() => {
+  if (mapValue.value) {
+    center.value = mapValue.value;
+  } else
+    navigator.geolocation.getCurrentPosition((pos) => {
+      center.value = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      mapValue.value = center.value;
+      emits("update_v_model", mapValue.value);
+    });
+});
 watch(
   () => props.initialData,
   (newData) => {
@@ -108,26 +120,6 @@ watch(
     }, 50);
   }
 );
-const props = defineProps<PropsInterface>();
-
-const emits = defineEmits(["addLocation", "update_v_model"]);
-
-interface CenterInterface {
-  lat?: number;
-  lng?: number;
-}
-const center = ref<CenterInterface>();
-onMounted(() => {
-  if (mapValue.value) {
-    center.value = mapValue.value;
-  } else
-    navigator.geolocation.getCurrentPosition((pos) => {
-      center.value = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-      mapValue.value = center.value;
-      emits("update_v_model", mapValue.value);
-    });
-});
-
 const subCityList = ref<
   | { id: number; name?: string; latitude: number; longitude: number }[]
   | undefined

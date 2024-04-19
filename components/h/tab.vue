@@ -1,8 +1,7 @@
 <template>
   <ul :class="['w-full flex flex-col gap-6', parentClass]">
     <li
-      class="w-full flex justify-center sticky bg-light300 bg-opacity-20 backdrop-blur z-30 top-[2.8rem] -left-10 right-0 gap-8 border-b-2 items-center"
-    >
+      class="w-full flex justify-center sticky bg-light300 bg-opacity-20 backdrop-blur z-30 top-[2.8rem] -left-10 right-0 gap-8 border-b-2 items-center">
       <button
         type="button"
         class="relative group py-2 px-2.5 font-bold gorup before:content-[''] before:absolute hover:before:left-0 hover:before:right-0 before:-bottom-0.5 before:bg-primaryvar1 before:h-[0.15rem] hover:before:w-full before:rounded-full before:transition-all before:ease-in-out before:duration-200 transition-colors ease-in-out duration-200"
@@ -18,13 +17,11 @@
           ($event) => {
             activeTab = tab.text;
           }
-        "
-      >
+        ">
         <Icon
           v-if="tab.icon"
           :name="tab.icon"
-          class="group-hover:text-primaryvar1 w-6 h-6"
-        />
+          class="group-hover:text-primaryvar1 w-6 h-6" />
         {{ $t(tab.text) }}
         <small
           v-if="tab?.badge"
@@ -33,12 +30,14 @@
         >
       </button>
     </li>
-    <slot :name="activeTab" :activeTab="activeTab"> </slot>
+    <slot
+      :name="activeTab"
+      :activeTab="activeTab">
+    </slot>
   </ul>
 </template>
 
 <script setup lang="ts">
-import { watch } from "fs";
 import { watchEffect } from "vue";
 import { ref } from "vue";
 

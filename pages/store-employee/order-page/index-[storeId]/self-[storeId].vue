@@ -1,33 +1,30 @@
 <template>
   <div
-    class="flex my-4 mt-2 w-full rounded-md items-center justify-center relative"
-  >
+    class="flex my-4 mt-2 w-full rounded-md items-center justify-center relative">
     <div class="relative w-full">
       <Icon
         name="ic:twotone-search"
-        class="w-5 h-5 text-primary absolute top-3 left-2"
-      />
+        class="w-5 h-5 text-primary absolute top-3 left-2" />
       <input
         type="search"
         placeholder="Search By Customer,order id ..."
         class="pl-8 w-full rounded-md placeholder:text-sm border-[1px] border-primary focus:border-[1px] focus:ring-0 outline-none ring-0"
-        v-model="searchString"
-      />
+        v-model="searchString" />
     </div>
   </div>
 
   <main class="realtive w-full h-full">
-    <h-tab :tabs="tabs as []" @activeTabNameChange="handleTabChange">
+    <h-tab
+      :tabs="tabs as []"
+      @activeTabNameChange="handleTabChange">
       <template #New_order>
         <section class="flex flex-col gap-4 px-3">
           <div class="flex relative lg:flex-row flex-col-reverse gap-4">
             <div
-              class="h-fit flex-1 sm:min-w-[24rem] max-h-[calc(100vh-20rem)] overflow-y-auto mb-[8rem] min-w-full grid lg:grid-cols-1 md:grid-cols-2 gap-4"
-            >
+              class="h-fit flex-1 sm:min-w-[24rem] max-h-[calc(100vh-20rem)] overflow-y-auto mb-[8rem] min-w-full grid lg:grid-cols-1 md:grid-cols-2 gap-4">
               <h-empty
                 v-if="activeTabOrders.length === 0"
-                content="No Data Available😥"
-              >
+                content="No Data Available😥">
               </h-empty>
               <div
                 v-else
@@ -45,17 +42,16 @@
                   order.order_details[0].order_id
                     ? 'lg:bg-primary bg-neutral300'
                     : 'hover:bg-primaryvar3 bg-neutral300',
-                ]"
-              >
+                ]">
                 <p
                   class="font-semibold px-1.5 flex items-center justify-center text-light400"
-                  title="Expand"
-                >
-                  <Icon name="mdi:progress-check" class="w-7 h-7" />
+                  title="Expand">
+                  <Icon
+                    name="mdi:progress-check"
+                    class="w-7 h-7" />
                 </p>
                 <div
-                  class="px-2.5 py-1.5 flex bg-light400 rounded-r-sm flex-auto items-start justify-between gap-8"
-                >
+                  class="px-2.5 py-1.5 flex bg-light400 rounded-r-sm flex-auto items-start justify-between gap-8">
                   <div>
                     <h3 class="font-extrabold mb-1.5 rounded text-primary">
                       Order Id : {{ order.order_details[0].order_id }}
@@ -85,8 +81,7 @@
               v-model:showBottomSheet="controller.showBottomSheet"
               v-model:order="controller.activeOrder"
               ref="bottomSheetTarget"
-              orderType="PENDING"
-            />
+              orderType="PENDING" />
           </div>
         </section>
       </template>
@@ -95,12 +90,10 @@
         <section class="flex flex-col gap-4 px-3">
           <div class="flex relative lg:flex-row flex-col-reverse gap-4">
             <div
-              class="h-fit flex-1 sm:min-w-[24rem] max-h-[calc(100vh-20rem)] overflow-y-auto mb-[8rem] min-w-full grid lg:grid-cols-1 md:grid-cols-2 gap-4"
-            >
+              class="h-fit flex-1 sm:min-w-[24rem] max-h-[calc(100vh-20rem)] overflow-y-auto mb-[8rem] min-w-full grid lg:grid-cols-1 md:grid-cols-2 gap-4">
               <h-empty
                 v-if="activeTabOrders.length === 0"
-                content="No Data Available😥"
-              ></h-empty>
+                content="No Data Available😥"></h-empty>
               <div
                 v-else
                 v-for="order in activeTabOrders"
@@ -111,17 +104,16 @@
                     controller.showBottomSheet = true;
                   }
                 "
-                class="flex h-fit rounded shadow-sm items-center cursor-pointer justify-start transition-colors ease-in-out duration-300"
-              >
+                class="flex h-fit rounded shadow-sm items-center cursor-pointer justify-start transition-colors ease-in-out duration-300">
                 <p
                   class="font-semibold px-1.5 flex items-center justify-center text-light400"
-                  title="Expand"
-                >
-                  <Icon name="mdi:progress-check" class="w-7 h-7" />
+                  title="Expand">
+                  <Icon
+                    name="mdi:progress-check"
+                    class="w-7 h-7" />
                 </p>
                 <div
-                  class="px-2.5 py-1.5 flex bg-light400 rounded-r-sm flex-auto items-start justify-between gap-8"
-                >
+                  class="px-2.5 py-1.5 flex bg-light400 rounded-r-sm flex-auto items-start justify-between gap-8">
                   <div>
                     <h3 class="font-extrabold mb-1.5 rounded text-primary">
                       {{ order.order_details[0].order_id }}
@@ -147,8 +139,7 @@
               v-model:showBottomSheet="controller.showBottomSheet"
               v-model:order="controller.activeOrder"
               ref="bottomSheetTarget"
-              orderType="COMPLETED"
-            />
+              orderType="COMPLETED" />
           </div>
         </section>
       </template>
@@ -157,12 +148,10 @@
         <section class="flex flex-col gap-4 px-3">
           <div class="flex relative lg:flex-row flex-col-reverse gap-4">
             <div
-              class="h-fit flex-1 sm:min-w-[24rem] max-h-[calc(100vh-20rem)] overflow-y-auto mb-[8rem] min-w-full grid lg:grid-cols-1 md:grid-cols-2 gap-4"
-            >
+              class="h-fit flex-1 sm:min-w-[24rem] max-h-[calc(100vh-20rem)] overflow-y-auto mb-[8rem] min-w-full grid lg:grid-cols-1 md:grid-cols-2 gap-4">
               <h-empty
                 v-if="activeTabOrders.length === 0 && !onFetchProductLoading"
-                content="No Data Available😥"
-              ></h-empty>
+                content="No Data Available😥"></h-empty>
               <div
                 v-else
                 v-for="order in activeTabOrders"
@@ -173,17 +162,16 @@
                     controller.showBottomSheet = true;
                   }
                 "
-                class="flex h-fit rounded shadow-sm items-center cursor-pointer justify-start transition-colors ease-in-out duration-300"
-              >
+                class="flex h-fit rounded shadow-sm items-center cursor-pointer justify-start transition-colors ease-in-out duration-300">
                 <p
                   class="font-semibold px-1.5 flex items-center justify-center text-light400"
-                  title="Expand"
-                >
-                  <Icon name="mdi:progress-check" class="w-7 h-7" />
+                  title="Expand">
+                  <Icon
+                    name="mdi:progress-check"
+                    class="w-7 h-7" />
                 </p>
                 <div
-                  class="px-2.5 py-1.5 flex bg-light400 rounded-r-sm flex-auto items-start justify-between gap-8"
-                >
+                  class="px-2.5 py-1.5 flex bg-light400 rounded-r-sm flex-auto items-start justify-between gap-8">
                   <div>
                     <h3 class="font-extrabold mb-1.5 rounded text-primary">
                       {{ order.order_details[0].order_id }}
@@ -209,16 +197,14 @@
               v-model:showBottomSheet="controller.showBottomSheet"
               v-model:order="controller.activeOrder"
               ref="bottomSheetTarget"
-              orderType="DELIVERED"
-            />
+              orderType="DELIVERED" />
           </div>
         </section>
       </template>
     </h-tab>
     <h-loading
       v-if="onFetchProductLoading"
-      :showLoading="onFetchProductLoading"
-    ></h-loading>
+      :showLoading="onFetchProductLoading"></h-loading>
   </main>
 </template>
 <script setup lang="ts">
@@ -226,7 +212,6 @@ import { useAuth } from "~~/store/auth";
 import fetchProductOrderBySupplier from "@/apollo/query/product/order/fetchProductOrderBySupplierID.gql";
 import useCustomQuery from "~~/composables/useCustomQuery";
 import { onClickOutside } from "@vueuse/core";
-import { computed } from "@vue/reactivity";
 
 const route = useRoute();
 const storeId = computed(() => {
